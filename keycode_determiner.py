@@ -15,7 +15,8 @@ monitor.start()
 
 
 def pred(d):
-    return "keyboard" in d.name.lower()
+    keyboards = "mouse" not in d.name.lower()
+    return keyboards
 
 
 # Populate the "active devices" map, mapping from /dev/input/eventXX to

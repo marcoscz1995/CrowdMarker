@@ -109,7 +109,7 @@ if __name__ == "__main__":
     from listener.py.
     Happy Crowdmarking!
     '''
-    keyboard_event_number = 3
+    keyboard_event_number = INSERT_EVENT_NUMBER_HERE
     user_input = [["comment1",3, "KEY_KP5"],
         ["coment2", 4, "KEY_KP6"],
         ["coment3", 2, "KEY_KP4"]
