@@ -20,7 +20,7 @@ async def print_events(device):
         print(device_id)
 
 for device in devices:
-    if "keyboard" in device.name.lower():
+    if "mouse" not in device.name.lower():
         asyncio.ensure_future(print_events(device))
 
 loop = asyncio.get_event_loop()
