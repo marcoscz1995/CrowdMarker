@@ -48,8 +48,9 @@ the most efficient use of this script.
 ### Insert user inputs into Crowdmarker
 Insert your comments, points, and associated keyboard keys and event to `crowdmarker.py`
 - open `crowdmarker.py` in your favourite text editor
-- in line 112 change `INSERT_EVENT_NUMBER_HERE` to the number you got from running `keyboard_event_determiner.py`
-- in lines 113 insert your comment, points and key code you want to assign to it that you get from running `keycode_determiner.py`. Add as many comments as you have keycodes. Just follow the format of `["comment", point, "key code"]`.
+- in line 132 change `INSERT_EVENT_NUMBER_HERE` to the number you got from running `keyboard_event_determiner.py`
+- in line 133 change `INSERT_QUESTIONS_MAX_SCOREE_HERE` to the questions max score that you will be marking
+- in lines 134 insert your comment, points and key code you want to assign to it that you get from running `keycode_determiner.py`. Add as many comments as you have keycodes. Just follow the format of `["comment", point, "key code"]`.
 
 Note: Due to Pythons string formatting this script does not support the use of Latex commands that start with '\f' such as '\frac{}{}'. 
 
