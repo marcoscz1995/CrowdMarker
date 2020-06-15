@@ -1,4 +1,5 @@
 from math import floor
+import os
 
 import pyautogui as pyg
 from PIL import ImageFont
@@ -9,12 +10,15 @@ font = ImageFont.truetype('arial.ttf', 14)
 
 
 class CrowdMarker:
-    def __init__(self, comments, kybrd_event):
+    def __init__(self, comments, kybrd_event, max_score):
         self.comments = comments
         self.kybrd_event = "/dev/input/event"+str(kybrd_event)
+        self.max_score = max_score
 
     def enter_comment_mode_get_click_position(self):
         # enter comment mode, left click to add comment, get click position
+        pyg.press('V')
+        pyg.click()
         (current_x, current_y) = pyg.position()
         return (current_x, current_y)
 
@@ -57,6 +61,14 @@ class CrowdMarker:
     def enter_score(self):
         pyg.press('enter')
 
+    def enter_score_move_to_next_booklet(self):
+        pyg.press('enter', presses = 2)
+
+    def enter_perfect_score(self):
+        max_score = str(self.max_score)
+        pyg.press(max_score)
+        self.enter_score_move_to_next_booklet()
+
     def add_comment_points(self, comment):
         (current_x, current_y) = self.enter_comment_mode_get_click_position()
         self.add_comment(comment, current_x, current_y)
@@ -69,9 +81,17 @@ class CrowdMarker:
             if event.type == ecodes.EV_KEY:
                 key = categorize(event)
                 if key.keystate == key.key_down:
-                    comment_pnts = self.comments.get(key.keycode)
-                    self.add_comment_points(comment_pnts)
-
+                    if key.keystate == key.key_down:
+                        if key.keycode == 'KEY_W':
+                            self.enter_score_move_to_next_booklet()
+                        elif key.keycode == 'KEY_B':
+                            self.enter_perfect_score()
+                        else:
+                            if key.keycode in self.comments:
+                                comment_pnts = self.comments.get(key.keycode)
+                                self.add_comment_points(comment_pnts)
+                            else:
+                                pass
 
 class Comment:
     y_txt_area_pxls = 252
@@ -109,12 +129,12 @@ if __name__ == "__main__":
     from listener.py.
     Happy Crowdmarking!
     '''
-    keyboard_event_number = INSERT_EVENT_NUMBER_HERE
-    user_input = [["comment1",3, "KEY_KP5"],
-        ["coment2", 4, "KEY_KP6"],
-        ["coment3", 2, "KEY_KP4"]
-    ]
+    keyboard_event_number = 7
+    max_score = 8
+    user_input = [["show what integration technique used here", -1, "KEY_A"],
+                  ["coment2", 4, "KEY_R"],
+                  ["coment3", 2, "KEY_KP4"]]
 
     comments = Comment(user_input)
-    ta = CrowdMarker(comments.comments, keyboard_event_number)
+    ta = CrowdMarker(comments.comments, keyboard_event_number, max_score)
     ta.keyboard_input()
