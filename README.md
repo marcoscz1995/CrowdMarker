@@ -3,6 +3,9 @@ Crowdmarker is a Python script to assist TAs in grading work on the  [Crowdmark]
 Crowdmarker allows you to quickly insert comments by moving the cursor to where you would like to insert a comment
 and hit a key to insert and save a comment with its associated points. 
 
+Crowdkmarker also has mapped the F key to save a booklets score and move to the next unmarked booklet, and the G
+key to enter a perfect score and move to the next unmarked booklet.
+
 ## Getting Started
 ### Prerequisites
 - [Python 3](https://www.python.org/downloads/)
@@ -35,7 +38,8 @@ Run keycode_determiner.py
 
 Click on the keys you would like to assign comments to. For example if you would like to assign the letter A to a comment, click on A and you should see in you terminal something like `KEY_A`. Record this.
 
-Note: you should avoid the already assigned shortcut keys in Crowdmark (l,h,j,k,e,n,p,t,z,c,x,q,s,d).
+Note: you should avoid the already assigned shortcut keys in Crowdmark (l,h,j,k,e,n,p,t,z,c,x,q,s,d), as well as 
+the letters F and G as those are already mapped as described earlier (these can however be changed/removed in lines 85-88).
 
 Tip: when selecting keys I suggest choosing those on the left hand side of the keyboard. This way you can select
 comments with your left hand and choose where to insert them using your mouse with your right hand. I find this
