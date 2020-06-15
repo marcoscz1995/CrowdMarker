@@ -65,7 +65,7 @@ The comment will then be inserted.
 
 Happy Crowdmarking!
 
-Note: due to how the script works, you should not move the cursor while the comment is being inserted as the comment will not be saved or the points will not be added.
+Note: due to how the script works, you should not move the cursor while the comment is being inserted as the comment will not be saved or the points will not be added. Also the comment cannot be posted to close to the margins of the questions as the points can be recorded wrong.
 
 ### Turn off the script
 When you are done marking or want to turn off the script
