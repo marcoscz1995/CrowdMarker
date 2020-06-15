@@ -82,9 +82,9 @@ class CrowdMarker:
                 key = categorize(event)
                 if key.keystate == key.key_down:
                     if key.keystate == key.key_down:
-                        if key.keycode == 'KEY_W':
+                        if key.keycode == 'KEY_F':
                             self.enter_score_move_to_next_booklet()
-                        elif key.keycode == 'KEY_B':
+                        elif key.keycode == 'KEY_G':
                             self.enter_perfect_score()
                         else:
                             if key.keycode in self.comments:
@@ -129,11 +129,11 @@ if __name__ == "__main__":
     from listener.py.
     Happy Crowdmarking!
     '''
-    keyboard_event_number = 7
-    max_score = 8
-    user_input = [["show what integration technique used here", -1, "KEY_A"],
-                  ["coment2", 4, "KEY_R"],
-                  ["coment3", 2, "KEY_KP4"]]
+    keyboard_event_number = INSERT_KEYBOARD_EVENT_HERE
+    max_score =  INSERT_QUESTIONS_MAX_SCOREE_HERE
+    user_input = [["comment1", 3, "KEY_A"],
+                ["comment2", -1, "KEY_R"],
+                  ["comment3", 2, "KEY_KP4"]]
 
     comments = Comment(user_input)
     ta = CrowdMarker(comments.comments, keyboard_event_number, max_score)
