@@ -20,7 +20,7 @@ key to enter a perfect score and move to the next unmarked booklet.
 
 (Optional, but recomended) Create a virtual environment and activate it.
 - `python3 -m venv crowdmarker-env`
-- `source crowdmarker-en/bin/activate` 
+- `source crowdmarker-enn/bin/activate` 
 
 Install the required packages
 - `pip install -r requirements.txt`
