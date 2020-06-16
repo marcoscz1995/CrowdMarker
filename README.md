@@ -21,7 +21,7 @@ Sorry Linux users, but you will have to install this if you haven't already.
 
 (Optional, but recomended) Create a virtual environment and activate it.
 - `python3 -m venv crowdmarker-env`
-- `source crowdmarker-enn/bin/activate` 
+- `source crowdmarker-env/bin/activate` 
 
 Install the required packages
 - `pip install -r requirements.txt`
