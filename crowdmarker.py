@@ -1,18 +1,21 @@
 from math import floor
+import threading
 
+from pynput import keyboard
+from pynput.keyboard import Key, KeyCode
 import pyautogui as pyg
 from PIL import ImageFont
-from evdev import InputDevice, categorize, ecodes
 
 font = ImageFont.truetype('arial.ttf', 14)
 
 
-
-class CrowdMarker:
-    def __init__(self, comments, kybrd_event, max_score):
+class CrowdMarker(threading.Thread):
+    def __init__(self, comments, max_score, next_booklet_key, perfect_score_key):
+        super(CrowdMarker, self).__init__()
         self.comments = comments
-        self.kybrd_event = "/dev/input/event"+str(kybrd_event)
         self.max_score = max_score
+        self.next_booklet_key = next_booklet_key
+        self.perfect_score_key = perfect_score_key
 
     def enter_comment_mode_get_click_position(self):
         # enter comment mode, left click to add comment, get click position
@@ -61,7 +64,7 @@ class CrowdMarker:
         pyg.press('enter')
 
     def enter_score_move_to_next_booklet(self):
-        pyg.press('enter', presses = 2)
+        pyg.press('enter', presses=2)
 
     def enter_perfect_score(self):
         max_score = str(self.max_score)
@@ -74,23 +77,24 @@ class CrowdMarker:
         self.add_points(comment, current_x, current_y)
         self.save_comment(comment, current_x, current_y)
 
-    def keyboard_input(self):
-        keyboard = InputDevice(self.kybrd_event)
-        for event in keyboard.read_loop():
-            if event.type == ecodes.EV_KEY:
-                key = categorize(event)
-                if key.keystate == key.key_down:
-                    if key.keystate == key.key_down:
-                        if key.keycode == 'KEY_F':
-                            self.enter_score_move_to_next_booklet()
-                        elif key.keycode == 'KEY_G':
-                            self.enter_perfect_score()
-                        else:
-                            if key.keycode in self.comments:
-                                comment_pnts = self.comments.get(key.keycode)
-                                self.add_comment_points(comment_pnts)
-                            else:
-                                pass
+    def on_release(self, key):
+        if key == KeyCode.from_char(self.next_booklet_key):
+            self.enter_score_move_to_next_booklet()
+        elif key == KeyCode.from_char(self.perfect_score_key):
+            self.enter_perfect_score()
+        elif key == Key.esc:
+            return False
+        else:
+            if key in self.comments:
+                comment_pnts = self.comments.get(key)
+                self.add_comment_points(comment_pnts)
+            else:
+                pass
+
+    def run(self):
+        with keyboard.Listener(on_release=self.on_release) as listener:
+            listener.join()
+
 
 class Comment:
     y_txt_area_pxls = 252
@@ -102,7 +106,7 @@ class Comment:
 
     def __init__(self, comments):
         self.comments = {
-            comment[2]:
+            KeyCode.from_char(comment[2]):
             [comment[0], comment[1],
              self.x_move_point, self.x_move_save,
              self.set_y_move(comment[0])]
@@ -121,19 +125,26 @@ class Comment:
 
 if __name__ == "__main__":
     '''
-    Replace keyboard_event_number with number
-    found from event_namer_main.py.
     Replace the info in user_input for the comment and points you want,
-    and whichever keyboard key you want to associate it with that you got
-    from listener.py.
+    and whichever keyboard key you want to associate it with.
+
+    Change MAX_SCORE to the max score of the question you are marking.
+
+    Change NEXT_BOOKLET to whichever key you want to move to next umarked,
+    booklet, or leave as 'f' the default.
+
+    Change PERFECT_SCORE to whichever key you want to insert a perfect score,
+    or leave as 'g' the default.
+
     Happy Crowdmarking!
     '''
-    keyboard_event_number = INSERT_KEYBOARD_EVENT_HERE
-    max_score =  INSERT_QUESTIONS_MAX_SCOREE_HERE
-    user_input = [["comment1", 3, "KEY_A"],
-                ["comment2", -1, "KEY_R"],
-                  ["comment3", 2, "KEY_KP4"]]
+    MAX_SCORE = 4
+    NEXT_BOOKLET = 'f'
+    PERFECT_SCORE = 'g'
+    user_input = [["comment1", 3, 'a'],
+                  ["comment2", -1, 'r'],
+                  ["comment3", 2, 'y']]
 
     comments = Comment(user_input)
-    ta = CrowdMarker(comments.comments, keyboard_event_number, max_score)
-    ta.keyboard_input()
+    ta = CrowdMarker(comments.comments, MAX_SCORE, NEXT_BOOKLET, PERFECT_SCORE)
+    ta.start()
