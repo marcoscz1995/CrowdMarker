@@ -1,5 +1,4 @@
 from math import floor
-import os
 
 import pyautogui as pyg
 from PIL import ImageFont

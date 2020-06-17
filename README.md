@@ -52,7 +52,8 @@ Insert your comments, points, and associated keyboard keys and event to `crowdma
 - in line 133 change `INSERT_QUESTIONS_MAX_SCOREE_HERE` to the questions max score that you will be marking
 - in lines 134 insert your comment, points and key code you want to assign to it that you get from running `keycode_determiner.py`. Add as many comments as you have keycodes. Just follow the format of `["comment", point, "key code"]`.
 
-Note: Due to Pythons string formatting this script does not support the use of Latex commands that start with '\f' such as '\frac{}{}'. 
+Note: if you want to put latex code that starts with reserved python string formating such as '\f' or '\n', just 
+add 'r' before the start of the comment. For example: r"the correct answer is $$\frac{1}{2}$$"
 
 ### Start marking
 Once you are satisfied with your comments sign into Crowdmark, go to the question you want to mark and run the `crowdmarker.py` file.
