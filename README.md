@@ -10,7 +10,8 @@ key to enter a perfect score and move to the next unmarked booklet.
 ### Prerequisites
 - [Python 3](https://www.python.org/downloads/)
 - A TA or Professor level account on [Crowdmark](https://crowdmark.com/)
-
+- (Optional) [Python venv](https://docs.python.org/3/library/venv.html) is shipped with Python 3 but for some reason some distros separate it out into a separate distro package, such as python3-venv on Ubuntu/Debian.
+Sorry Linux users, but you will have to install this if you haven't already.
 ### Installation
 - Install or upgrade to [Python 3](https://www.python.org/downloads/).
 
@@ -20,7 +21,7 @@ key to enter a perfect score and move to the next unmarked booklet.
 
 (Optional, but recomended) Create a virtual environment and activate it.
 - `python3 -m venv crowdmarker-env`
-- source crowdmarker-en/bin/activate 
+- `source crowdmarker-env/bin/activate` 
 
 Install the required packages
 - `pip install -r requirements.txt`
