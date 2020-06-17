@@ -77,12 +77,6 @@ class CrowdMarker(threading.Thread):
         self.add_points(comment, current_x, current_y)
         self.save_comment(comment, current_x, current_y)
 
-    def func_x(self):
-        print('jii')
-
-    def on_press(self):
-        pass
-
     def on_release(self, key):
         if key == KeyCode.from_char(self.next_booklet_key):
             self.enter_score_move_to_next_booklet()
