@@ -138,7 +138,7 @@ if __name__ == "__main__":
 
     Happy Crowdmarking!
     '''
-    MAX_SCORE = 4
+    MAX_SCORE = INSERT_QUESTIONS_MAX_SCORE_HERE
     NEXT_BOOKLET = 'f'
     PERFECT_SCORE = 'g'
     user_input = [["comment1", 3, 'a'],

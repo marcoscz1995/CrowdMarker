@@ -26,35 +26,22 @@ Sorry Linux users, but you will have to install this if you haven't already.
 Install the required packages
 - `pip install -r requirements.txt`
 
-### Determine keyboard event number
-Run keyboard_event_determiner.py
-- `python keyboard_event_determiner.py`
-- Click any key on the keyboard you wish to assign keys to.
-
-You should see output like this in your terminal: `/dev/input/event7`. Record the number you see at the end of the output. In this case I would record 7 as my keyboard event number.
-
-### Determine keyboard key codes
-Run keycode_determiner.py
-- `python keycode_determiner.py`
-
-Click on the keys you would like to assign comments to. For example if you would like to assign the letter A to a comment, click on A and you should see in you terminal something like `KEY_A`. Record this.
-
-Note: you should avoid the already assigned shortcut keys in Crowdmark (l,h,j,k,e,n,p,t,z,c,x,q,s,d), as well as 
-the letters F and G as those are already mapped as described earlier (these can however be changed/removed in lines 85-88).
-
-Tip: when selecting keys I suggest choosing those on the left hand side of the keyboard. This way you can select
-comments with your left hand and choose where to insert them using your mouse with your right hand. I find this
-the most efficient use of this script.  
 
 ### Insert user inputs into Crowdmarker
 Insert your comments, points, and associated keyboard keys and event to `crowdmarker.py`
 - open `crowdmarker.py` in your favourite text editor
-- in line 132 change `INSERT_EVENT_NUMBER_HERE` to the number you got from running `keyboard_event_determiner.py`
-- in line 133 change `INSERT_QUESTIONS_MAX_SCOREE_HERE` to the questions max score that you will be marking
-- in lines 134 insert your comment, points and key code you want to assign to it that you get from running `keycode_determiner.py`. Add as many comments as you have keycodes. Just follow the format of `["comment", point, "key code"]`.
+- in line 141 change `INSERT_QUESTIONS_MAX_SCORE_HERE` to the questions max score that you will be marking
+- in lines 142 and 143 change the letters 'f' and 'g' to whatever keys you want to map to move to the next unmarked booklet and enter a perfect score, respectively. Or do not change them if you want to keep those default values.
+- in lines 144 insert your comment, points and key code you want to assign to it. Add as many comments as you have keycodes. Just follow the format of `["comment", point, 'key code']`. Example: `["show what lemma used here", -1, 'r']`
+
+Note: you should avoid the already assigned shortcut keys in Crowdmark (l,h,j,k,e,n,p,t,z,c,x,q,s,d).
 
 Note: if you want to put latex code that starts with reserved python string formating such as '\f' or '\n', just 
-add 'r' before the start of the comment. For example: r"the correct answer is $$\frac{1}{2}$$"
+add 'r' before the start of the comment. For example: [r"the correct answer is $$\frac{1}{2}$$", -2, 'a']
+
+Tip: when selecting keys I suggest choosing those on the left hand side of the keyboard. This way you can select
+comments with your left hand and choose where to insert them using your mouse with your right hand. I find this
+the most efficient use of this script.  
 
 ### Start marking
 Once you are satisfied with your comments sign into Crowdmark, go to the question you want to mark and run the `crowdmarker.py` file.
@@ -67,11 +54,11 @@ The comment will then be inserted.
 
 Happy Crowdmarking!
 
-Note: due to how the script works, you should not move the cursor while the comment is being inserted as the comment will not be saved or the points will not be added. Also the comment cannot be posted to close to the margins of the questions as the points can be recorded wrong.
+Note: due to how the script works, you should not move the cursor while the comment is being inserted as the comment will not be saved or the points will not be added. Also the comment cannot be posted too close to the margins of the questions as the points can be recorded wrong.
 
 ### Turn off the script
 When you are done marking or want to turn off the script
-- go to the terminal and press `Contrl+C` to end the script
+- Press the `Esc` key to end the script
 
 To deactivate the virtual environment just type in your terminal
 - deactivate
