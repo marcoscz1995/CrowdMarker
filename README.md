@@ -58,7 +58,7 @@ Note: due to how the script works, you should not move the cursor while the comm
 
 ### Turn off the script
 When you are done marking or want to turn off the script
-- Press the `Esc` key to end the script
+- Press the `Esc` key to end the scrip key to end the scriptt
 
 To deactivate the virtual environment just type in your terminal
 - deactivate
