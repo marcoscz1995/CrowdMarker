@@ -123,20 +123,31 @@ class Comment:
 
 if __name__ == "__main__":
     '''
-    Replace keyboard_event_number with number
-    found from event_namer_main.py.
     Replace the info in user_input for the comment and points you want,
-    and whichever keyboard key you want to associate it with that you got
-    from listener.py.
+    and whichever keyboard key you want to associate it with.
+
+    Change MAX_SCORE to the max score of the question you are marking.
+
+    Change NEXT_BOOKLET to whichever key you want to move to next umarked,
+    booklet, or leave as 'KEY_F'. Recall, KEY_F saves a booklets score and
+    moves to the next unmarked booklet.
+
+    Change PERFECT_SCORE to whichever key you want to insert a perfect score,
+    or leave as 'KEY_G'. Recall, KEY_G enter a perfect score and moves to
+    the next unmarked booklet.
+
+
     Happy Crowdmarking!
     '''
+
+#     MAX_SCORE = 4
+#     NEXT_BOOKLET = 'KEY_F'
+#     PERFECT_SCORE = 'KEY_G'
+#     KEYBOARD_EVENT_NUMBER = 3
+    max_score = 4
     keyboard_event_number = 3
-    max_score = 8
-    user_input = [[r"partials in wrong order in use of greens thrm. need to write $\frac{F_1}{dx}+\frac{F_2}{dy}+\frac{F_3}{dz}$.", -1, "KEY_W"],
-                  [r"order of integration wrong. make sure your integrals match up with your $d$s", -1, "KEY_A"],
-                  [r"r integral bounds are wrong.", -1, "KEY_R"],
-                  [r"$\theta$ integral bounds are wrong.", -1, "KEY_Y"],
-                  [r"$z$ integral bounds are wrong.", -1, "KEY_V"]]
+
+    user_input = [[r'r integral bounds are wrong.', -1, "KEY_R"]]
 
     comments = Comment(user_input)
     ta = CrowdMarker(comments.comments, keyboard_event_number, max_score)
