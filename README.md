@@ -10,8 +10,9 @@ key to enter a perfect score and move to the next unmarked booklet.
 ### Prerequisites
 - [Python 3](https://www.python.org/downloads/)
 - A TA or Professor level account on [Crowdmark](https://crowdmark.com/)
-- (Optional) [Python venv](https://docs.python.org/3/library/venv.html) is shipped with Python 3 but for some reason some distros separate it out into a separate distro package, such as python3-venv on Ubuntu/Debian.
+- (Optional) [Python venv](https://docs.python.org/3/library/venv.html) is shipped with Python 3 but for some reason some distros separate it out into a separate package, such as python3-venv on Ubuntu/Debian.
 Sorry Linux users, but you will have to install this if you haven't already.
+- 
 ### Installation
 - Install or upgrade to [Python 3](https://www.python.org/downloads/).
 
@@ -39,12 +40,12 @@ Run keycode_determiner.py
 
 Click on the keys you would like to assign comments to. For example if you would like to assign the letter A to a comment, click on A and you should see in you terminal something like `KEY_A`. Record this.
 
-Note: you should avoid the already assigned shortcut keys in Crowdmark (l,h,j,k,e,n,p,t,z,c,x,q,s,d), as well as 
-the letters F and G as those are already mapped as described earlier (these can however be changed/removed in lines 85-88).
+Note: you should avoid the already assigned shortcut keys in Crowdmark (L, H, J, K, E, N, P, T, Z, C, X, Q, S, D), as well as 
+the letters F and G as those are already mapped as described earlier (these can however be changed/removed in lines 85-88 in crowdmarker.py).
 
 Tip: when selecting keys I suggest choosing those on the left hand side of the keyboard. This way you can select
 comments with your left hand and choose where to insert them using your mouse with your right hand. I find this
-the most efficient use of this script.  
+the most efficient use of this script.
 
 ### Insert user inputs into Crowdmarker
 Insert your comments, points, and associated keyboard keys and event to `crowdmarker.py`
@@ -54,7 +55,8 @@ Insert your comments, points, and associated keyboard keys and event to `crowdma
 - in lines 134 insert your comment, points and key code you want to assign to it that you get from running `keycode_determiner.py`. Add as many comments as you have keycodes. Just follow the format of `["comment", point, "key code"]`.
 
 Note: if you want to put latex code that starts with reserved python string formating such as '\f' or '\n', just 
-add 'r' before the start of the comment. For example: r"the correct answer is $$\frac{1}{2}$$"
+add 'r' before the start of the comment. For example: 
+- `r"the correct answer is $$\frac{1}{2}$$`
 
 ### Start marking
 Once you are satisfied with your comments sign into Crowdmark, go to the question you want to mark and run the `crowdmarker.py` file.
@@ -67,11 +69,11 @@ The comment will then be inserted.
 
 Happy Crowdmarking!
 
-Note: due to how the script works, you should not move the cursor while the comment is being inserted as the comment will not be saved or the points will not be added. Also the comment cannot be posted to close to the margins of the questions as the points can be recorded wrong.
+Note: due to how the script works, you should not move the cursor while the comment is being inserted as the comment will not be saved or the points will not be added. Also the comment cannot be posted too close to the margins of the questions as the points can be recorded wrong.
 
 ### Turn off the script
 When you are done marking or want to turn off the script
-- go to the terminal and press `Contrl+C` to end the script
+- go to the terminal and press `Contrl+C` or hit the `Escape` key from anywhere to end the script. 
 
 To deactivate the virtual environment just type in your terminal
 - deactivate

@@ -130,7 +130,7 @@ if __name__ == "__main__":
     from listener.py.
     Happy Crowdmarking!
     '''
-    keyboard_event_number = 4
+    keyboard_event_number = 3
     max_score = 8
     user_input = [[r"partials in wrong order in use of greens thrm. need to write $\frac{F_1}{dx}+\frac{F_2}{dy}+\frac{F_3}{dz}$.", -1, "KEY_W"],
                   [r"order of integration wrong. make sure your integrals match up with your $d$s", -1, "KEY_A"],

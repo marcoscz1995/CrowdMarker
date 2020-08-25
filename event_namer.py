@@ -7,7 +7,6 @@ from evdev import InputDevice, list_devices
 
 devices = map(InputDevice, tuple(list_devices()))
 
-
 async def get_event_id(device):
     async for event in device.async_read_loop():
         return device_id
