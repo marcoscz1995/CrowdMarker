@@ -10,22 +10,37 @@ key to enter a perfect score and move to the next unmarked booklet.
 ### Prerequisites
 - [Python 3](https://www.python.org/downloads/)
 - A TA or Professor level account on [Crowdmark](https://crowdmark.com/)
+- A Linux distro with root priviliges. These instructions will use Debian compatibles OSs but can be changed for any distro.
 - (Optional) [Python venv](https://docs.python.org/3/library/venv.html) is shipped with Python 3 but for some reason some distros separate it out into a separate package, such as python3-venv on Ubuntu/Debian.
 Sorry Linux users, but you will have to install this if you haven't already.
-- 
+
 ### Installation
 - Install or upgrade to [Python 3](https://www.python.org/downloads/).
-
- Clone this repository, and move into it
+Clone this repository, and move into it
 - `git clone https://github.com/marcoscz1995/Crowdmarker.git`
 - `cd Crowdmarker`
+
+Configure your OS for Evdev (see [here](https://python-evdev.readthedocs.io/en/latest/install.html) for more info)
+- `sudo apt-get install python-dev python-pip gcc`
+- `apt-get install linux-headers-$(uname -r)`
+
+Configure your OS for PyAutoGui (see [here](https://stackoverflow.com/questions/34939986/how-to-install-pyautogui) for more info)
+- `sudo pip3 install python3-xlib`
+- `sudo apt-get install scrot python3-tk python3-dev`
 
 (Optional, but recomended) Create a virtual environment and activate it.
 - `python3 -m venv crowdmarker-env`
 - `source crowdmarker-env/bin/activate` 
 
+
+
+
+
+
+
+
 Install the required packages
-- `pip install -r requirements.txt`
+- `pip3 install -r requirements.txt`
 
 ### Determine keyboard event number
 Run keyboard_event_determiner.py
@@ -33,6 +48,10 @@ Run keyboard_event_determiner.py
 - Click any key on the keyboard you wish to assign keys to.
 
 You should see output like this in your terminal: `/dev/input/event7`. Record the number you see at the end of the output. In this case I would record 7 as my keyboard event number.
+
+### Make PyAutoGui "compatible" with Evdev using the output from the about step
+
+-`sudo chmod a+r /dev/input/event7`
 
 ### Determine keyboard key codes
 Run keycode_determiner.py
@@ -51,12 +70,12 @@ the most efficient use of this script.
 Insert your comments, points, and associated keyboard keys and event to `crowdmarker.py`
 - open `crowdmarker.py` in your favourite text editor
 - in line 132 change `INSERT_EVENT_NUMBER_HERE` to the number you got from running `keyboard_event_determiner.py`
-- in line 133 change `INSERT_QUESTIONS_MAX_SCOREE_HERE` to the questions max score that you will be marking
+- in line 133 change `INSERT_QUESTIONS_MAX_SCORE_HERE` to the questions max score that you will be marking
 - in lines 134 insert your comment, points and key code you want to assign to it that you get from running `keycode_determiner.py`. Add as many comments as you have keycodes. Just follow the format of `["comment", point, "key code"]`.
 
 Note: if you want to put latex code that starts with reserved python string formating such as '\f' or '\n', just 
 add 'r' before the start of the comment. For example: 
-- `r"the correct answer is $$\frac{1}{2}$$`
+- `r"the correct answer is $$\frac{1}{2}$$"`
 
 ### Start marking
 Once you are satisfied with your comments sign into Crowdmark, go to the question you want to mark and run the `crowdmarker.py` file.
@@ -69,7 +88,7 @@ The comment will then be inserted.
 
 Happy Crowdmarking!
 
-Note: due to how the script works, you should not move the cursor while the comment is being inserted as the comment will not be saved or the points will not be added. Also the comment cannot be posted too close to the margins of the questions as the points can be recorded wrong.
+Note: due to how the script works, you should **not** move the cursor while the comment is being inserted as the comment will not be saved or the points will not be added. Also the comment cannot be posted too close to the margins of the questions as the points can be recorded wrong.
 
 ### Turn off the script
 When you are done marking or want to turn off the script

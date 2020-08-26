@@ -6,12 +6,14 @@ from evdev import InputDevice, categorize, ecodes
 
 font = ImageFont.truetype('arial.ttf', 14)
 
-
 class CrowdMarker:
-    def __init__(self, comments, kybrd_event, max_score):
+    def __init__(self, comments, next_booklet, perfect_score,
+                 kybrd_event, max_score):
         self.comments = comments
         self.kybrd_event = "/dev/input/event" + str(kybrd_event)
         self.max_score = max_score
+        self.next_booklet = next_booklet
+        self.perfect_score = perfect_score
 
     def enter_comment_mode_get_click_position(self):
         # enter comment mode, left click to add comment, get click position
@@ -80,9 +82,9 @@ class CrowdMarker:
                 key = categorize(event)
                 if key.keystate == key.key_down:
                     if key.keystate == key.key_down:
-                        if key.keycode == 'KEY_F':
+                        if key.keycode == self.next_booklet:
                             self.enter_score_move_to_next_booklet()
-                        elif key.keycode == 'KEY_G':
+                        elif key.keycode == self.perfect_score:
                             self.enter_perfect_score()
                         elif key.keycode == 'KEY_ESC':
                             return False
@@ -140,15 +142,14 @@ if __name__ == "__main__":
     Happy Crowdmarking!
     '''
 
-#     MAX_SCORE = 4
-#     NEXT_BOOKLET = 'KEY_F'
-#     PERFECT_SCORE = 'KEY_G'
-#     KEYBOARD_EVENT_NUMBER = 3
-    max_score = 4
-    keyboard_event_number = 3
+    MAX_SCORE = 4
+    NEXT_BOOKLET = 'KEY_F'
+    PERFECT_SCORE = 'KEY_G'
+    KEYBOARD_EVENT_NUMBER = 3
 
     user_input = [[r'r integral bounds are wrong.', -1, "KEY_R"]]
 
     comments = Comment(user_input)
-    ta = CrowdMarker(comments.comments, keyboard_event_number, max_score)
+    ta = CrowdMarker(comments.comments, NEXT_BOOKLET, PERFECT_SCORE,
+                     KEYBOARD_EVENT_NUMBER, MAX_SCORE)
     ta.keyboard_input()
