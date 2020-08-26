@@ -10,7 +10,7 @@ key to enter a perfect score and move to the next unmarked booklet.
 ### Prerequisites
 - [Python 3](https://www.python.org/downloads/)
 - A TA or Professor level account on [Crowdmark](https://crowdmark.com/)
-- A Linux distro with root priviliges. These instructions will use Debian compatibles OSs but can be changed for any distro.
+- A Linux distro with root privileges. These instructions will use Debian compatibles OSs but can be changed for any distro.
 - (Optional) [Python venv](https://docs.python.org/3/library/venv.html) is shipped with Python 3 but for some reason some distros separate it out into a separate package, such as python3-venv on Ubuntu/Debian.
 Sorry Linux users, but you will have to install this if you haven't already.
 
@@ -28,16 +28,8 @@ Configure your OS for PyAutoGui (see [here](https://stackoverflow.com/questions/
 - `sudo pip3 install python3-xlib`
 - `sudo apt-get install scrot python3-tk python3-dev`
 
-(Optional, but recomended) Create a virtual environment and activate it.
-- `python3 -m venv crowdmarker-env`
+(Optional, but recommended) Activate the virtual environment.
 - `source crowdmarker-env/bin/activate` 
-
-
-
-
-
-
-
 
 Install the required packages
 - `pip3 install -r requirements.txt`

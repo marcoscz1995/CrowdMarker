@@ -142,12 +142,13 @@ if __name__ == "__main__":
     Happy Crowdmarking!
     '''
 
-    MAX_SCORE = 4
+    MAX_SCORE = enter max score here
     NEXT_BOOKLET = 'KEY_F'
     PERFECT_SCORE = 'KEY_G'
-    KEYBOARD_EVENT_NUMBER = 3
+    KEYBOARD_EVENT_NUMBER = enter your keyboard event number
 
-    user_input = [[r'r integral bounds are wrong.', -1, "KEY_R"]]
+    user_input = [['enter your comment here.', enter point here,
+                   "enter key here"]]
 
     comments = Comment(user_input)
     ta = CrowdMarker(comments.comments, NEXT_BOOKLET, PERFECT_SCORE,
