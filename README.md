@@ -28,7 +28,8 @@ Configure your OS for PyAutoGui (see [here](https://stackoverflow.com/questions/
 - `sudo pip3 install python3-xlib`
 - `sudo apt-get install scrot python3-tk python3-dev`
 
-(Optional, but recommended) Activate the virtual environment.
+(Optional, but recommended) Create and activate a virtual environment.
+- `python3 -m venv crowdmarker-env`
 - `source crowdmarker-env/bin/activate` 
 
 Install the required packages
