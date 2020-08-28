@@ -22,7 +22,7 @@ Clone this repository, and move into it
 
 Configure your OS for Evdev (see [here](https://python-evdev.readthedocs.io/en/latest/install.html) for more info)
 - `sudo apt-get install python3-dev python3-pip gcc`
-- `apt-get install linux-headers-$(uname -r)`
+- `sudo apt-get install linux-headers-$(uname -r)`
 
 Configure your OS for PyAutoGui (see [here](https://stackoverflow.com/questions/34939986/how-to-install-pyautogui) for more info)
 - `sudo pip3 install python3-xlib`
