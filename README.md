@@ -38,8 +38,8 @@ If you get errors like `Failed building wheel for XXXX` you might need to instal
 - `pip3 install wheel`
 
 ### Determine keyboard event number
-Run keyboard_event_determiner.py
-- `python3 keyboard_event_determiner.py`
+Run keyboard_event_determiner.py (This script will run for three seconds, so be quick!)
+- `sudo python3 keyboard_event_determiner.py`
 - Click any key on the keyboard you wish to assign keys to.
 
 You should see output like this in your terminal: `/dev/input/event7`. Record the number you see at the end of the output. In this case I would record 7 as my keyboard event number.
