@@ -1,12 +1,5 @@
 """
 File: crowdmarker.py
-Author: yourname
-Email: yourname@email.com
-Github: https://github.com/yourname
-Description: k
-"""
-"""
-File: crowdmarker.py
 Author: Marcos Cardenas-Zelaya
 Email: marcoscz@yorku.ca
 Github: https://github.com/marcoscz1995
