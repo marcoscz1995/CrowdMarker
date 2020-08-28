@@ -51,6 +51,7 @@ Run keycode_determiner.py
 
 Click on the keys you would like to assign comments to. For example if you would like to assign the letter A to a comment, click on A and you should see in you terminal something like `KEY_A`. Record this.
 
+-Hit `Control+C` to end the script when you have all your desired key codes.
 Note: you should avoid the already assigned shortcut keys in Crowdmark (L, H, J, K, E, N, P, T, Z, C, X, Q, S, D), as well as 
 the letters F and G as those are already mapped as described earlier (these can however be changed/removed in lines 85-88 in crowdmarker.py).
 
