@@ -21,7 +21,7 @@ Clone this repository, and move into it
 - `cd Crowdmarker`
 
 Configure your OS for Evdev (see [here](https://python-evdev.readthedocs.io/en/latest/install.html) for more info)
-- `sudo apt-get install python-dev python-pip gcc`
+- `sudo apt-get install python3-dev python3-pip gcc`
 - `apt-get install linux-headers-$(uname -r)`
 
 Configure your OS for PyAutoGui (see [here](https://stackoverflow.com/questions/34939986/how-to-install-pyautogui) for more info)
@@ -37,7 +37,7 @@ Install the required packages
 
 ### Determine keyboard event number
 Run keyboard_event_determiner.py
-- `python keyboard_event_determiner.py`
+- `python3 keyboard_event_determiner.py`
 - Click any key on the keyboard you wish to assign keys to.
 
 You should see output like this in your terminal: `/dev/input/event7`. Record the number you see at the end of the output. In this case I would record 7 as my keyboard event number.
@@ -48,7 +48,7 @@ You should see output like this in your terminal: `/dev/input/event7`. Record th
 
 ### Determine keyboard key codes
 Run keycode_determiner.py
-- `python keycode_determiner.py`
+- `python3 keycode_determiner.py`
 
 Click on the keys you would like to assign comments to. For example if you would like to assign the letter A to a comment, click on A and you should see in you terminal something like `KEY_A`. Record this.
 
@@ -72,7 +72,7 @@ add 'r' before the start of the comment. For example:
 
 ### Start marking
 Once you are satisfied with your comments sign into Crowdmark, go to the question you want to mark and run the `crowdmarker.py` file.
-- `python crowdmarker.py`
+- `python3 crowdmarker.py`
 - go to your desired Crowdmark question
 - move the cursor to where you would like to insert a comment
 - click the associated key for that comment
