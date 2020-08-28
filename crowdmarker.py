@@ -97,6 +97,15 @@ class CrowdMarker:
 
 
 class Comment:
+    """
+    Input: comment
+    Output: the verticle change in pixels of a the comment
+    This class finds the verticle pixel hight of a comment that will fit
+    in the Crowdmark comment box as long comments will cause the box height
+    to increase. This is to tell how much pyautogui needs
+    to move vertically to insert commnets/points/save comments.
+
+    """
     y_txt_area_pxls = 252
     pxls_b4_frst_ovrflow = 803
     y_default_change = 108
