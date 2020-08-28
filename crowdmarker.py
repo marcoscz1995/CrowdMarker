@@ -1,3 +1,21 @@
+"""
+File: crowdmarker.py
+Author: yourname
+Email: yourname@email.com
+Github: https://github.com/yourname
+Description: k
+"""
+"""
+File: crowdmarker.py
+Author: Marcos Cardenas-Zelaya
+Email: marcoscz@yorku.ca
+Github: https://github.com/marcoscz1995
+Description: Crowdmarker takes in user defined array of comments, points and
+    key codes that are set to keyboard macros to insert comments with
+    associated points into the Crowdmark platform to increase marking time.
+"""
+
+
 from math import floor
 
 import pyautogui as pyg
