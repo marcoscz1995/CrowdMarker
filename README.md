@@ -34,6 +34,7 @@ Configure your OS for PyAutoGui (see [here](https://stackoverflow.com/questions/
 
 Install the required packages
 - `pip3 install -r requirements.txt`
+
 If you get errors like `Failed building wheel for XXXX` you might need to install wheel
 - `pip3 install wheel`
 
