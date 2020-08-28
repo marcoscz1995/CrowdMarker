@@ -44,9 +44,6 @@ Run keyboard_event_determiner.py (This script will run for three seconds, so be 
 
 You should see output like this in your terminal: `/dev/input/event7`. Record the number you see at the end of the output. In this case I would record 7 as my keyboard event number.
 
-### Make PyAutoGui "compatible" with Evdev using the output from the about step
-
--`sudo chmod a+r /dev/input/event7`
 
 ### Determine keyboard key codes
 Run keycode_determiner.py
