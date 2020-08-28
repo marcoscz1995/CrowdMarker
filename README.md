@@ -47,7 +47,7 @@ You should see output like this in your terminal: `/dev/input/event7`. Record th
 
 ### Determine keyboard key codes
 Run keycode_determiner.py
-- `python3 keycode_determiner.py`
+- `sudo python3 keycode_determiner.py`
 
 Click on the keys you would like to assign comments to. For example if you would like to assign the letter A to a comment, click on A and you should see in you terminal something like `KEY_A`. Record this.
 
